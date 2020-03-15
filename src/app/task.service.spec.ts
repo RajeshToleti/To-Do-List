@@ -1,11 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
+import { TaskService } from "./task.service";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { tasksReducer } from "./reducers/tasks.reducer";
 
-import { TaskService } from './task.service';
+describe("TaskService", () => {
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        StoreModule.forRoot({
+          tasks: tasksReducer
+        })
+      ],
 
-describe('TaskService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+      providers: [HttpClient]
+    })
+  );
 
-  it('should be created', () => {
+  it("should be created", () => {
     const service: TaskService = TestBed.get(TaskService);
     expect(service).toBeTruthy();
   });
