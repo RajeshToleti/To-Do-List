@@ -51,15 +51,8 @@ export class AddComponent implements OnInit {
       .addTask({ id, label, description, category, done })
       .subscribe(
         result => {
+          this.taskList = [];
           this.taskService.getTasks();
-          this.tasks = this.taskStore.select("tasks");
-          this.tasks.subscribe(data => {
-            data.tasks.map(c => {
-              this.taskList.push(
-                new Task(c.id, c.label, c.description, c.category, c.done)
-              );
-            });
-          });
         },
         err => {
           console.log(err);

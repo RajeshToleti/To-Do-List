@@ -13,13 +13,6 @@
       "description": "Start doing my taxes and contact my accountant jhon for advice",
       "category": "bureaucracy",
       "done": "22-10-2019"
-    },
-    {
-      "id": 4,
-      "label": "Play",
-      "description": "Play badminton",
-      "category": "leisure",
-      "done": false
     }
   ]
 }

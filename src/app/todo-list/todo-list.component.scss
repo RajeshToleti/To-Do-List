@@ -1,9 +1,13 @@
-.todo-input {
-  width: 50%;
-  padding: 10px 18px;
-  font-size: 10px;
-  margin-bottom: 16px;
+.inputArea {
+  padding-top: 10px;
+}
 
+.todo-input {
+  width: 20%;
+  padding: 2px 2px;
+  font-size: 10px;
+  margin-bottom: 2px;
+  margin: 6px;
   &:focus {
     outline: 0;
   }

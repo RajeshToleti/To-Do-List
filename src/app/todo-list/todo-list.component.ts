@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   beforeEditCache: string;
   filter: string;
   anyRemainingModel: boolean;
+  maxid: number;
 
   constructor(
     private taskService: TaskService,
@@ -27,27 +28,37 @@ export class TodoListComponent implements OnInit {
   delTask(id: number) {
     this.taskService.deleteTask(id).subscribe(
       res => {
+        this.taskList = [];
         this.taskService.getTasks();
       },
       err => {
         console.log(err);
       }
     );
-    // this.tasks = this.taskStore.select("tasks");
-    // this.taskService.deleteTask(id).subscribe(data => {
-    //   data.tasks.map(c => {
-    //     this.taskList.push(
-    //       new Task(c.id, c.label, c.description, c.category, c.done)
-    //     );
-    //   });
-    // }
-    // );
-
-    //this.taskStore.dispatch(new TasksActions.RemoveTask(index));
+  }
+  addTask(
+    id: number,
+    label: string,
+    description: string,
+    category: string,
+    done: boolean
+  ) {
+    this.taskService
+      .addTask({ id, label, description, category, done })
+      .subscribe(
+        result => {
+          this.taskList = [];
+          this.taskService.getTasks();
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
   ngOnInit() {
     this.taskService.getTasks();
     this.tasks = this.taskStore.select("tasks");
+
     this.tasks.subscribe(data => {
       data.tasks.map(c => {
         this.taskList.push(
@@ -56,19 +67,12 @@ export class TodoListComponent implements OnInit {
       });
     });
 
-    //this.getTasks();
-    // this.anyRemainingModel = true;
-    // this.filter = "all";
-    // this.beforeEditCache = "";
-    // this.idForTodo = 4;
-    // this.todoTitle = "";
+    this.maxid =
+      Math.max.apply(
+        Math,
+        this.taskList.map(function(o) {
+          return o.id;
+        })
+      ) + 1;
   }
-
-  // this.tasks.push({
-  //   id: this.idForTodo,
-  //   label: this.todoTitle,
-  //   description: "this.description",
-  //   category: "this.category",
-  //   done: false
-  // });
 }

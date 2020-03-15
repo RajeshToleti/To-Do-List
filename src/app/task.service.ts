@@ -26,8 +26,6 @@ export class TaskService {
   ) {}
 
   getTasks() {
-    //return this.http.get(endpoint);
-
     this.http
       .get(endpoint)
       .pipe(
@@ -35,7 +33,7 @@ export class TaskService {
           const tasks: Task[] = Object.keys(responseData).map(
             key => responseData[key]
           );
-          console.log(tasks);
+          //console.log(tasks);
           return tasks;
         })
       )
@@ -47,12 +45,12 @@ export class TaskService {
   deleteTask(id: number): Observable<any> {
     return this.http
       .delete<any>(endpoint + id, httpOptions)
-      .pipe(tap(_ => console.log(`deleted task id=${id}`)));
+      .pipe(tap(_ => console.log("deleted task id=${id}")));
   }
 
   addTask(task: Task): Observable<any> {
     return this.http
       .post<any>(endpoint, JSON.stringify(task), httpOptions)
-      .pipe(tap(task => console.log(`added task `)));
+      .pipe(tap(task => console.log("added task")));
   }
 }

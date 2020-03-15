@@ -20,6 +20,29 @@
     </div>
   </div>
 </div>
+<div class="inputArea">
+  <input type="text" class="todo-input" placeholder="Title" #Title /><br />
+  <input
+    type="textarea"
+    class="todo-input"
+    placeholder="Description"
+    #Description
+  /><br />
+  <input
+    type="textarea"
+    class="todo-input"
+    placeholder="Category"
+    #Category
+  /><br />
+  <button
+    class="button buttonRoundCorner"
+    (click)="
+      addTask(maxid, Title.value, Description.value, Category.value, false)
+    "
+  >
+    Add
+  </button>
+</div>
 <!-- <div class="extra-container">
   <div>
     <label
