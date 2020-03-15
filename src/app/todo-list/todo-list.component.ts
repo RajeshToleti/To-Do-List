@@ -13,12 +13,11 @@ import * as TasksActions from "./../actions/tasks.actions";
 export class TodoListComponent implements OnInit {
   tasks: Observable<{ tasks: Task[] }>;
   taskList: Task[] = [];
-  todoTitle: string;
-  idForTodo: number;
-  beforeEditCache: string;
-  filter: string;
-  anyRemainingModel: boolean;
   maxid: number;
+  showInput: boolean = true;
+  showEdit: boolean = false;
+  enableEdit = false;
+  enableEditIndex = null;
 
   constructor(
     private taskService: TaskService,
@@ -54,6 +53,30 @@ export class TodoListComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+  showEditArea(e, i) {
+    this.showEdit = true;
+    this.enableEdit = true;
+    this.enableEditIndex = i;
+  }
+  editTask(
+    id: number,
+    label: string,
+    description: string,
+    category: string,
+    done: boolean
+  ) {
+    // this.taskService
+    //   .addTask({ id, label, description, category, done })
+    //   .subscribe(
+    //     result => {
+    //       this.taskList = [];
+    //       this.taskService.getTasks();
+    //     },
+    //     err => {
+    //       console.log(err);
+    //     }
+    //   );
   }
   ngOnInit() {
     this.taskService.getTasks();
