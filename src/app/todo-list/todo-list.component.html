@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="todo-item" *ngFor="let task of taskList">
+    <div class="todo-item-left">
+      <div style="padding: 4px;">
+        <input type="checkbox" [(ngModel)]="task.done" />
+      </div>
+      <div style="padding: 4px;width:150px">
+        <b>Title:</b> {{ task?.label }}
+      </div>
+
+      <div style="padding: 4px;width:500px">
+        <b>Description:</b> {{ task?.description }}
+      </div>
+      <div style="padding: 4px;width:150px">
+        <b>Category:</b> {{ task?.category }}
+      </div>
+      <div style="padding: 4px;" (click)="delTask(task.id)">
+        &#x274C;
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="extra-container">
+  <div>
+    <label
+      ><input
+        type="checkbox"
+        (change)="checkAllTodos()"
+        [(ngModel)]="!anyRemainingModel"
+      />
+      Check All</label
+    >
+  </div>
+  <div>{{ remaining() }} items left</div>
+</div>
+
+<div class="extra-container">
+  <div>
+    <button [ngClass]="{ active: filter === 'all' }" (click)="filter = 'all'">
+      All
+    </button>
+    <button
+      [ngClass]="{ active: filter === 'active' }"
+      (click)="filter = 'active'"
+    >
+      Active
+    </button>
+    <button
+      [ngClass]="{ active: filter === 'completed' }"
+      (click)="filter = 'completed'"
+    >
+      Completed
+    </button>
+  </div>
+</div> -->
