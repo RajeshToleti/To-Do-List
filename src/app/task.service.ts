@@ -53,4 +53,10 @@ export class TaskService {
       .post<any>(endpoint, JSON.stringify(task), httpOptions)
       .pipe(tap(task => console.log("added task")));
   }
+  editTask(task: Task): Observable<any> {
+    console.log(task);
+    return this.http
+      .patch<any>(endpoint + task.id, JSON.stringify(task), httpOptions)
+      .pipe(tap(task => console.log("updated the task")));
+  }
 }

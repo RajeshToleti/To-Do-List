@@ -14,7 +14,7 @@ export class TodoListComponent implements OnInit {
   tasks: Observable<{ tasks: Task[] }>;
   taskList: Task[] = [];
   maxid: number;
-  showInput: boolean = true;
+
   showEdit: boolean = false;
   enableEdit = false;
   enableEditIndex = null;
@@ -54,8 +54,7 @@ export class TodoListComponent implements OnInit {
         }
       );
   }
-  showEditArea(e, i) {
-    this.showEdit = true;
+  enableEditMethod(e, i) {
     this.enableEdit = true;
     this.enableEditIndex = i;
   }
@@ -66,17 +65,19 @@ export class TodoListComponent implements OnInit {
     category: string,
     done: boolean
   ) {
-    // this.taskService
-    //   .addTask({ id, label, description, category, done })
-    //   .subscribe(
-    //     result => {
-    //       this.taskList = [];
-    //       this.taskService.getTasks();
-    //     },
-    //     err => {
-    //       console.log(err);
-    //     }
-    //   );
+    this.taskService
+      .editTask({ id, label, description, category, done })
+      .subscribe(
+        result => {
+          this.enableEdit = false;
+          this.enableEditIndex = null;
+          this.taskList = [];
+          this.taskService.getTasks();
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
   ngOnInit() {
     this.taskService.getTasks();

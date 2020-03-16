@@ -8,24 +8,26 @@
         <b>Title:</b
         ><input
           type="textarea"
-          value="{{ task?.label }}"
+          [(ngModel)]="task.label"
           class="labelDiv"
           #Label
-          *ngIf="showEdit"
+          *ngIf="enableEdit && enableEditIndex == i"
         />
-        <span *ngIf="!showEdit" class="labelDiv">{{ task?.label }}</span>
+        <span *ngIf="!(enableEditIndex == i)" class="labelDiv">{{
+          task?.label
+        }}</span>
       </div>
 
       <div class="descriptionDiv">
         <b>Description:</b
         ><input
           type="textarea"
-          value="{{ task?.description }}"
+          [(ngModel)]="task.description"
           class="descriptionDiv"
           #Description
-          *ngIf="showEdit"
+          *ngIf="enableEdit && enableEditIndex == i"
         />
-        <span *ngIf="!showEdit" class="descriptionDiv">{{
+        <span *ngIf="!(enableEditIndex == i)" class="descriptionDiv">{{
           task?.description
         }}</span>
       </div>
@@ -33,24 +35,53 @@
         <b>Category:</b>
         <input
           type="textarea"
-          value="{{ task?.category }}"
+          [(ngModel)]="task.category"
           class="labelDiv"
           #Category
-          *ngIf="showEdit"
+          *ngIf="enableEdit && enableEditIndex == i"
         />
-        <span *ngIf="!showEdit" class="labelDiv">{{ task?.category }}</span>
+        <span *ngIf="!(enableEditIndex == i)" class="labelDiv">{{
+          task?.category
+        }}</span>
       </div>
       <div style="padding: 4px;">
-        <button class="button buttonRoundCorner" (click)="showEditArea(maxid)">
-          Edit
+        <button
+          *ngIf="enableEdit && enableEditIndex == i"
+          id="saveBtn"
+          (click)="
+            editTask(
+              task.id,
+              task.label,
+              task.description,
+              task.category,
+              task.done
+            )
+          "
+          class="button buttonRoundCorner"
+        >
+          Save
         </button>
       </div>
-      <div style="padding: 4px;" (click)="delTask(task.id)">
-        &#x274C;
+      <div style="padding: 4px;">
+        <button
+          (click)="enableEditMethod($event, i)"
+          class="buttonWhite buttonRoundCorner"
+        >
+          &#x270D;
+        </button>
+      </div>
+      <div style="padding: 4px;">
+        <button
+          (click)="delTask(task.id)"
+          class="buttonWhite buttonRoundCorner"
+        >
+          &#x274C;
+        </button>
       </div>
     </div>
   </div>
 </div>
+
 <div class="inputArea">
   <input type="text" class="todo-input" placeholder="Title" #Title /><br />
   <input
