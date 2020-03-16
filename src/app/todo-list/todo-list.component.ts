@@ -14,10 +14,10 @@ export class TodoListComponent implements OnInit {
   tasks: Observable<{ tasks: Task[] }>;
   taskList: Task[] = [];
   maxid: number;
-
   showEdit: boolean = false;
-  enableEdit = false;
+  enableEdit: boolean = false;
   enableEditIndex = null;
+  doneFilter: boolean = false;
 
   constructor(
     private taskService: TaskService,
@@ -34,6 +34,7 @@ export class TodoListComponent implements OnInit {
         console.log(err);
       }
     );
+    if (this.doneFilter) location.reload();
   }
   addTask(
     id: number,
@@ -42,20 +43,18 @@ export class TodoListComponent implements OnInit {
     category: string,
     done: boolean
   ) {
-    console.log("in add task");
-    console.log("before " + this.taskList);
     this.taskService
       .addTask({ id, label, description, category, done })
       .subscribe(
         result => {
-          this.taskList = [];
+          this.taskList.length = 0;
           this.taskService.getTasks();
         },
         err => {
           console.log(err);
         }
       );
-    console.log(this.taskList);
+    if (this.doneFilter) location.reload();
   }
   enableEditMethod(e, i) {
     this.enableEdit = true;
@@ -81,9 +80,11 @@ export class TodoListComponent implements OnInit {
           console.log(err);
         }
       );
+    if (this.doneFilter) location.reload();
   }
   filter(st: string) {
-    this.taskList = [];
+    this.doneFilter = true;
+    this.taskList.length = 0;
     this.tasks.subscribe(data => {
       data.tasks.map(c => {
         this.taskList.push(
