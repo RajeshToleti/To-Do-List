@@ -2,7 +2,19 @@
   <div class="todo-item" *ngFor="let task of taskList; index as i">
     <div class="todo-item-left">
       <div style="padding: 4px;">
-        <input type="checkbox" [(ngModel)]="task.done" />
+        <input
+          type="checkbox"
+          [(ngModel)]="task.done"
+          (change)="
+            editTask(
+              task.id,
+              task.label,
+              task.description,
+              task.category,
+              task.done
+            )
+          "
+        />
       </div>
       <div class="labelDiv">
         <b>Title:</b
