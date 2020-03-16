@@ -5,7 +5,7 @@
       "label": "Taxes",
       "description": "Start doing my taxes and contact my accountant jhon for advice",
       "category": "bureaucracy",
-      "done": "22-10-2019"
+      "done": true
     },
     {
       "id": 4,
@@ -15,10 +15,24 @@
       "done": false
     },
     {
-      "id": 6,
-      "label": "test6",
-      "description": "shdjka asjhdjas jhjhsad",
-      "category": "job",
+      "id": 7,
+      "label": "Lunch",
+      "description": "Aadye pandu has to eat lunch",
+      "category": "home",
+      "done": true
+    },
+    {
+      "id": 8,
+      "label": "Testa",
+      "description": "sdsa",
+      "category": "sadsa",
+      "done": true
+    },
+    {
+      "id": 9,
+      "label": "testsd",
+      "description": "sdsasda",
+      "category": "sfds",
       "done": false
     }
   ]

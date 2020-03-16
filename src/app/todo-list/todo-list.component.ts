@@ -79,10 +79,25 @@ export class TodoListComponent implements OnInit {
         }
       );
   }
+  filter(st: string) {
+    this.taskList = [];
+    this.tasks.subscribe(data => {
+      data.tasks.map(c => {
+        this.taskList.push(
+          new Task(c.id, c.label, c.description, c.category, c.done)
+        );
+      });
+    });
+    if (st == "active") {
+      this.taskList = this.taskList.filter(t => t.done != true);
+    } else if (st == "done") {
+      this.taskList = this.taskList.filter(t => t.done != false);
+    }
+  }
   ngOnInit() {
+    this.taskList = [];
     this.taskService.getTasks();
     this.tasks = this.taskStore.select("tasks");
-
     this.tasks.subscribe(data => {
       data.tasks.map(c => {
         this.taskList.push(
