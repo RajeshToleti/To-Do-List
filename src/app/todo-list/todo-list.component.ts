@@ -42,6 +42,8 @@ export class TodoListComponent implements OnInit {
     category: string,
     done: boolean
   ) {
+    console.log("in add task");
+    console.log("before " + this.taskList);
     this.taskService
       .addTask({ id, label, description, category, done })
       .subscribe(
@@ -53,6 +55,7 @@ export class TodoListComponent implements OnInit {
           console.log(err);
         }
       );
+    console.log(this.taskList);
   }
   enableEditMethod(e, i) {
     this.enableEdit = true;
@@ -95,6 +98,7 @@ export class TodoListComponent implements OnInit {
     }
   }
   ngOnInit() {
+    console.log("in ng init");
     this.taskList = [];
     this.taskService.getTasks();
     this.tasks = this.taskStore.select("tasks");

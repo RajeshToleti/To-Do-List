@@ -23,16 +23,9 @@
     },
     {
       "id": 8,
-      "label": "Testa",
-      "description": "sdsa",
-      "category": "sadsa",
-      "done": true
-    },
-    {
-      "id": 9,
-      "label": "testsd",
-      "description": "sdsasda",
-      "category": "sfds",
+      "label": "test3",
+      "description": "testttttting",
+      "category": "asdas",
       "done": false
     }
   ]

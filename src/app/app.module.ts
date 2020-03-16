@@ -8,10 +8,9 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { TodoListComponent } from "./todo-list/todo-list.component";
 import { FormsModule } from "@angular/forms";
 import { tasksReducer } from "./reducers/tasks.reducer";
-import { AddComponent } from './add/add.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, AddComponent],
+  declarations: [AppComponent, TodoListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
