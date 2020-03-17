@@ -99,7 +99,6 @@ export class TodoListComponent implements OnInit {
     }
   }
   ngOnInit() {
-    console.log("in ng init");
     this.taskList = [];
     this.taskService.getTasks();
     this.tasks = this.taskStore.select("tasks");

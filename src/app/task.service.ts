@@ -33,7 +33,7 @@ export class TaskService {
           const tasks: Task[] = Object.keys(responseData).map(
             key => responseData[key]
           );
-          //console.log(tasks);
+
           return tasks;
         })
       )
@@ -50,7 +50,6 @@ export class TaskService {
     return this.http.post<any>(endpoint, JSON.stringify(task), httpOptions);
   }
   editTask(task: Task): Observable<any> {
-    console.log(task);
     return this.http.patch<any>(
       endpoint + task.id,
       JSON.stringify(task),
