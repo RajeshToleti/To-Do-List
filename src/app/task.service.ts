@@ -38,7 +38,7 @@ export class TaskService {
         })
       )
       .subscribe(data => {
-        this.store.dispatch(new TasksActions.AddTask(data));
+        this.store.dispatch(new TasksActions.LoadTask(data));
       });
   }
 

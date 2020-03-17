@@ -11,14 +11,10 @@ export function tasksReducer(
   action: TasksActions.TaskActions
 ) {
   switch (action.type) {
-    case TasksActions.ADD_TASK:
+    case TasksActions.LOAD_TASK:
       return {
         tasks: action.payload
       };
-    case TasksActions.REMOVE_TASK:
-      const index = action.payload;
-
-      return [...state.tasks.slice(0, index), ...state.tasks.slice(index + 1)];
 
     default:
       return state;
