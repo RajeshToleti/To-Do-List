@@ -1,13 +1,6 @@
 {
   "tasks": [
     {
-      "id": 2,
-      "label": "Taxes",
-      "description": "Start doing my taxes and contact my accountant jhon for advice",
-      "category": "bureaucracy",
-      "done": true
-    },
-    {
       "id": 4,
       "label": "super",
       "description": "amzing description",
@@ -19,6 +12,13 @@
       "label": "Lunch",
       "description": "Aadye pandu has to eat lunch",
       "category": "home",
+      "done": true
+    },
+    {
+      "id": 8,
+      "label": "test",
+      "description": "sfsd",
+      "category": "sdfsd",
       "done": true
     }
   ]

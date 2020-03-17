@@ -3,6 +3,7 @@ import { TaskService } from "./task.service";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { StoreModule } from "@ngrx/store";
 import { tasksReducer } from "./reducers/tasks.reducer";
+import { Task } from "./models/task.model";
 
 describe("TaskService", () => {
   beforeEach(() =>

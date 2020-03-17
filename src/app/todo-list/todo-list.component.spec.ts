@@ -31,7 +31,17 @@ describe("TodoListComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it("should create the component", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("Enable edit  assigns the input to enableEditIndex", () => {
+    component.enableEditMethod(Event, 2);
+    expect(component.enableEditIndex).toBe(2);
+  });
+
+  it("Enable edit changes enableEdit to true", () => {
+    component.enableEditMethod(Event, 2);
+    expect(component.enableEdit).toBeTruthy();
   });
 });

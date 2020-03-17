@@ -58,11 +58,6 @@
   }
 }
 
-.completed {
-  text-decoration: line-through;
-  color: grey;
-}
-
 .extra-container {
   display: flex;
   align-items: center;
@@ -85,15 +80,4 @@ button {
 
 .active {
   background: lightgreen;
-}
-
-// CSS Transitions
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }

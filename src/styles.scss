@@ -37,26 +37,12 @@ body {
   cursor: pointer;
 }
 .buttonWhite {
+  @extend .button;
   background-color: white;
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  margin: 4px 2px;
-  cursor: pointer;
 }
 .buttonBlue {
+  @extend .button;
   background-color: rgb(181, 131, 238);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  margin: 4px 2px;
-  cursor: pointer;
   text-decoration: underline;
 }
 
